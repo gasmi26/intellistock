@@ -1,0 +1,17 @@
+{
+  "run_date": "2026-05-24",
+  "sku": "ITEM_003",
+  "predicted_demand_4_weeks": 406.36,
+  "recommended_order_qty": 407,
+  "total_cost": 21164.0,
+  "optimization_status": "Optimal",
+  "critic_verdict": "REVISE",
+  "warnings": [
+    "Blacklisted supplier detected in market context."
+  ],
+  "market_context": [
+    "Supplier A lead time increased from 3 to 6 weeks updated May 2025.",
+    "Supplier C has been blacklisted in winter months due to delays.",
+    "Sea freight rates from Shanghai up 30% use air for urgent orders."
+  ]
+}
