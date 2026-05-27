@@ -54,12 +54,25 @@ def get_context(sku, n=52):
 
 def predict_demand(sku, horizon=4):
     context = get_context(sku, n=52)
+
+    print(f"\nSKU: {sku}")
+    print("Last 10 sales values:")
+    print(context[-10:])
+
     forecast = pipe.predict(
         inputs=[context],
         prediction_length=horizon,
         num_samples=20
     )
-    return round(float(forecast[0].median(dim=0).values.sum()), 2)
+
+    prediction = round(
+        float(forecast[0].median(dim=0).values.sum()),
+        2
+    )
+
+    print("Prediction:", prediction)
+
+    return prediction
 
 def optimize_inventory(predicted_demand, unit_cost=50,
                        storage_cost=2, budget=30000,
@@ -93,6 +106,11 @@ def run_critic(optimization_result, market_context):
     return {"verdict": verdict, "warnings": warnings}
 
 # ── API Routes ──
+@app.route("/")
+def home():
+    return jsonify({
+        "message": "IntelliStock Backend Running"
+    })
 @app.route("/api/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok", "message": "IntelliStock API running"})
