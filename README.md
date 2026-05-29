@@ -4,21 +4,8 @@ An AI-powered autonomous procurement system that takes a product SKU as input an
 
 🔄 FULL DATA FLOW
 
-SKU Input (React)
-      ↓
-Flask /api/run
-      ↓
-SQLite → Chronos-T5 → predicted_demand
-      ↓
-FAISS RAG → market_context (fetched once)
-      ↓
-PuLP LP Solver → order_qty + total_cost
-      ↓
-Llama3 Critic → verdict + reasoning
-      ↓
-Llama3 Reporter → ai_report
-      ↓
-JSON report saved + returned to React frontend
+<img width="1472" height="1640" alt="image" src="https://github.com/user-attachments/assets/5a69639b-c54c-41d4-bc25-c4c62dd0852c" />
+
 
 
 🏗️ TECH STACK
